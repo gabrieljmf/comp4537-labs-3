@@ -17,10 +17,15 @@ http
 
     res.writeHead(200, { "Content-Type": "text/html" });
     res.write(data);
-
-    res.end(
-      `<button ><a href='/?name=gabe'>Send Name</a></button><br />${serverTime.getTime()}`
-    );
+    let greetings =
+      "<button><a href='/?name=gabe'>Send Name</a></button><br />";
+    if (fullUrl.query.name) {
+      greetings = `<button><a href='/?name=gabe'>Send Name</a></button><br /><b style='color:#2b78e4'>
+      Hello ${
+        fullUrl.query.name
+      }, What a beautiful day. Server current date and time is ${serverTime.getTime()}</b>`;
+    }
+    res.end(greetings);
   })
   .listen(8888);
 
