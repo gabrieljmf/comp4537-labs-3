@@ -18,7 +18,9 @@ http
     res.writeHead(200, { "Content-Type": "text/html" });
     res.write(data);
 
-    res.end(`<button ><a href='/?name=gabe'>Send Name</a></button>`);
+    res.end(
+      `<button ><a href='/?name=gabe'>Send Name</a></button><br />${serverTime.getTime()}`
+    );
   })
   .listen(8888);
 
